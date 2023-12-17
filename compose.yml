@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - SERVERURL=${SERVERURL}
+      - SERVERPORT=${SERVERPORT}
+      - PEERS=${PEERS}
+      - PEERDNS=${PEERDNS}
+      - ALLOWEDIPS=${ALLOWEDIPS}
+      - PERSISTENTKEEPALIVE_PEERS=${PERSISTENTKEEPALIVE_PEERS}
+      - LOG_CONFS=true
+    volumes:
+      - /lib/modules:/lib/modules
+      - ./conf:/config
+    ports:
+      - ${SERVERPORT}:${SERVERPORT}/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
