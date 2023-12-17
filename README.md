@@ -1,4 +1,4 @@
-# Quick WireGuard VPN docker compose setup
+# Quick & easy WireGuard VPN docker compose setup
 
 ## Prerequisites
 Before starting, ensure you have the following prerequisites:
