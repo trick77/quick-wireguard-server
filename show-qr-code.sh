@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker compose exec wireguard show-peer $1
+docker compose exec wireguard /app/show-peer $1
